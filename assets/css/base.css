@@ -1,0 +1,102 @@
+/* =============================================================
+   MEU VALOR — BASE  (reset, fonte Causten, escala tipográfica)
+   ============================================================= */
+
+/* ---- Fonte Causten ----------------------------------------
+   Coloque os arquivos reais em assets/fonts/ com estes nomes.
+   Enquanto não existirem, o fallback (Poppins/sistema) assume.
+   ----------------------------------------------------------- */
+@font-face {
+  font-family: 'Causten';
+  src: url('../fonts/Causten-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Causten';
+  src: url('../fonts/Causten-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Causten';
+  src: url('../fonts/Causten-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Causten';
+  src: url('../fonts/Causten-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Causten';
+  src: url('../fonts/Causten-ExtraBold.woff2') format('woff2');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+
+/* ---- Reset --------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-base);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  font-weight: var(--fw-regular);
+  color: var(--color-text);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { font: inherit; cursor: pointer; }
+input, textarea, select { font: inherit; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+
+/* ---- Escala tipográfica (Causten) ---------------------------
+   Classes utilitárias .t-* + defaults nos elementos h1..h4.
+   Os títulos grandes usam clamp() p/ não quebrar no mobile,
+   mantendo o tamanho do Figma como máximo no desktop.
+   ----------------------------------------------------------- */
+h1, h2, h3, h4 { color: var(--color-heading); font-weight: var(--fw-bold); }
+
+.t-hero {
+  font-size: clamp(2.5rem, 6vw, var(--fs-hero));
+  line-height: var(--lh-hero); font-weight: var(--fw-extra); color: var(--color-heading);
+}
+.t-h1, h1 {
+  font-size: clamp(2.25rem, 5vw, var(--fs-h1));
+  line-height: var(--lh-h1); font-weight: var(--fw-bold);
+}
+.t-h2, h2 {
+  font-size: clamp(1.85rem, 4vw, var(--fs-h2));
+  line-height: var(--lh-h2); font-weight: var(--fw-bold);
+}
+.t-h3, h3 {
+  font-size: clamp(1.5rem, 3vw, var(--fs-h3));
+  line-height: var(--lh-h3); font-weight: var(--fw-semibold);
+}
+.t-h4, h4 {
+  font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--fw-semibold);
+}
+.t-body   { font-size: var(--fs-body); line-height: var(--lh-body); }
+.t-base   { font-size: var(--fs-base); line-height: var(--lh-base); }
+.t-sm     { font-size: var(--fs-sm);   line-height: var(--lh-sm); }
+.t-overline {
+  font-size: var(--fs-overline); line-height: var(--lh-overline);
+  letter-spacing: var(--tracking-overline); text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+}
+
+/* ---- Helpers ------------------------------------------------- */
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--space-5); }
+.container--narrow { max-width: var(--container-narrow); margin-inline: auto; }
+.hl { color: var(--color-primary); }          /* destaque dentro de título */
+.text-center { text-align: center; }
+.section { padding-block: var(--space-9); }
+.section--soft  { background: var(--color-surface-soft); }
+.section--blue  { background: var(--color-surface-blue); }
+.lead { font-size: var(--fs-body); line-height: var(--lh-body); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.stack > * + * { margin-top: var(--space-4); }

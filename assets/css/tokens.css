@@ -1,0 +1,91 @@
+/* =============================================================
+   MEU VALOR — DESIGN TOKENS  (ÚNICA FONTE DE VERDADE)
+   -------------------------------------------------------------
+   Edite as cores e a tipografia AQUI. Tudo no site muda junto.
+   Cores aproximadas do Figma — substitua pelos hex oficiais.
+   ============================================================= */
+
+:root {
+
+  /* ----------------------------------------------------------
+     1) CORES — paleta crua (mude o hex e reflete no site todo)
+     ---------------------------------------------------------- */
+  --c-navy:        #16264f;  /* azul-marinho principal (logo, footer, títulos) */
+  --c-navy-700:    #20305c;
+  --c-navy-500:    #2c3a5e;  /* títulos de texto */
+  --c-lime:        #b4dc4c;  /* verde-limão — CTA principal */
+  --c-lime-700:    #a3cb3b;  /* limão hover/click */
+  --c-green:       #35c06e;  /* verde institucional — faixa de segurança / marca */
+  --c-green-700:   #2aa85e;
+  --c-teal:        #2bb38f;  /* segundo verde da marca (detalhe do logo) */
+  --c-body:        #4d5a78;  /* corpo de texto */
+  --c-muted:       #6e7ba6;  /* ícones / marcação de imagem */
+  --c-line:        #e3e9f4;  /* bordas e divisórias */
+  --c-bg:          #ffffff;
+  --c-bg-soft:     #f4f6fb;  /* cards / seções suaves */
+  --c-bg-blue:     #e9f1fe;  /* seções de fundo azul-claro */
+  --c-green-soft:  #e9f8ef;  /* destaque suave (aviso WhatsApp) */
+  --c-white:       #ffffff;
+
+  /* ----------------------------------------------------------
+     2) CORES SEMÂNTICAS — use ESTAS nos componentes
+     ---------------------------------------------------------- */
+  --color-primary:        var(--c-navy);
+  --color-primary-soft:   var(--c-navy-700);
+  --color-accent:         var(--c-lime);     /* botões CTA */
+  --color-accent-strong:  var(--c-lime-700);
+  --color-success:        var(--c-green);    /* faixa de segurança */
+  --color-heading:        var(--c-navy);
+  --color-text:           var(--c-body);
+  --color-text-soft:      var(--c-muted);
+  --color-border:         var(--c-line);
+  --color-surface:        var(--c-white);
+  --color-surface-soft:   var(--c-bg-soft);
+  --color-surface-blue:   var(--c-bg-blue);
+
+  /* ----------------------------------------------------------
+     3) TIPOGRAFIA — Causten + escala oficial (size / line-height)
+     ---------------------------------------------------------- */
+  --font-base: 'Causten', 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+  --fw-extra:   800;
+
+  /* Escala (px do Figma convertidos p/ rem, base 16px) */
+  --fs-hero: 3.75rem;   --lh-hero: 1.083;   /* 60 / 65 */
+  --fs-h1:   3.125rem;  --lh-h1:   1.08;    /* 50 / 54 */
+  --fs-h2:   2.5rem;    --lh-h2:   1.10;    /* 40 / 44 */
+  --fs-h3:   1.875rem;  --lh-h3:   1.267;   /* 30 / 38 */
+  --fs-h4:   1.375rem;  --lh-h4:   1.364;   /* 22 / 30 */
+  --fs-body: 1.125rem;  --lh-body: 1.333;   /* 18 / 24 — corpo grande */
+  --fs-base: 1rem;      --lh-base: 1.375;   /* 16 / 22 — corpo padrão */
+  --fs-sm:   0.875rem;  --lh-sm:   1.286;   /* 14 / 18 — pequeno */
+  --fs-overline: 0.75rem; --lh-overline: 1.333; /* 12 / 16 — overline/label */
+  --fs-btn:  1rem;      --lh-btn:  1.25;    /* 16 / 20 — ação/botão */
+
+  --tracking-overline: 0.14em;
+
+  /* ----------------------------------------------------------
+     4) ESPAÇAMENTO, RAIO, SOMBRA, LAYOUT
+     ---------------------------------------------------------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 24px;  --space-6: 32px;  --space-7: 48px;  --space-8: 64px;
+  --space-9: 96px;
+
+  --radius-sm: 12px;
+  --radius:    18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 6px 18px rgba(22, 38, 79, 0.06);
+  --shadow:    0 18px 40px rgba(22, 38, 79, 0.08);
+  --shadow-lg: 0 28px 60px rgba(22, 38, 79, 0.12);
+
+  --container: 1180px;
+  --container-narrow: 820px;
+
+  --transition: 0.18s ease;
+}
