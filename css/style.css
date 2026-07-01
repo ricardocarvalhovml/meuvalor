@@ -49,7 +49,9 @@
   --font-heading: "Causten", "Poppins", "Segoe UI", system-ui, sans-serif;
   --font-body:    "Causten", "Poppins", "Segoe UI", system-ui, sans-serif;
 
-  --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700; --fw-extra:800; --fw-black:900;
+  /* O site usa APENAS dois pesos: Regular (400) e Bold (700).
+     Os apelidos abaixo caem num dos dois — não há semibold/medium/extra no site. */
+  --fw-regular:400; --fw-medium:400; --fw-semibold:700; --fw-bold:700; --fw-extra:700; --fw-black:700;
 
   /* tamanhos (px do Figma → rem) e entrelinhas */
   --fs-hero: 3.75rem;  --lh-hero: 1.083;  /* 60 / 65 */
@@ -399,8 +401,7 @@ section { padding: 0; }
 }
 
 .hero .highlight {
-  font-style: italic;
-  font-weight: 600;
+  font-weight: var(--fw-bold);
   color: var(--color-navy);
 }
 
