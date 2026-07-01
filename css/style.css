@@ -161,7 +161,7 @@ section { padding: 0; }
    (.btn é apelido de .btn-padrao, para não quebrar marcações existentes.)
    ========================================================================== */
 
-/* Base compartilhada: geometria + fonte (peso/tamanho iguais nos três) */
+/* Base compartilhada: só geometria + fonte-família (tipografia é por tipo, abaixo) */
 .btn-padrao, .btn, .btn-header, .btn-form {
   display: inline-flex;
   align-items: center;
@@ -170,9 +170,6 @@ section { padding: 0; }
   padding: 14px 28px;
   border-radius: 999px;
   font-family: var(--font-heading);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-btn);
-  line-height: var(--lh-btn);
   text-decoration: none;
   text-align: center;
   cursor: pointer;
@@ -181,18 +178,23 @@ section { padding: 0; }
 }
 .btn-padrao:active, .btn:active, .btn-header:active, .btn-form:active { transform: translateY(1px); }
 
-/* 1) PADRÃO — limão › (hover) navy › (click) verde-claro */
-.btn-padrao, .btn                 { background: var(--c-lime);       color: var(--c-navy); }
+/* 1) PADRÃO — limão › (hover) navy › (click) verde-claro | 18/24 BOLD */
+.btn-padrao, .btn                 { background: var(--c-lime);       color: var(--c-navy);
+                                    font-size: var(--fs-body); line-height: var(--lh-body); font-weight: var(--fw-bold); }
 .btn-padrao:hover, .btn:hover     { background: var(--c-navy);       color: #fff; }
 .btn-padrao:active, .btn:active   { background: var(--c-green-pale); color: var(--c-navy); }
 
-/* 2) HEADER — texto (sem fundo) › (hover) limão › (click) navy */
-.btn-header          { background: transparent;   color: var(--c-navy); }
+/* 2) HEADER (itens do menu) — texto › (hover) limão › (click) navy | 18/24 REGULAR */
+.btn-header          { background: transparent;   color: var(--c-navy);
+                       font-size: var(--fs-body); line-height: var(--lh-body); font-weight: var(--fw-regular);
+                       padding: 8px 16px; }
 .btn-header:hover    { background: var(--c-lime);  color: var(--c-navy); }
-.btn-header:active   { background: var(--c-navy);  color: #fff; }
+.btn-header:active,
+.btn-header.is-active { background: var(--c-navy);  color: #fff; }
 
-/* 3) FORMULÁRIO (com seta) — limão › (hover) verde-claro › (click) navy */
-.btn-form            { background: var(--c-lime);       color: var(--c-navy); padding-left: 8px; }
+/* 3) FORMULÁRIO (com seta) — limão › (hover) verde-claro › (click) navy | 14/18 REGULAR */
+.btn-form            { background: var(--c-lime);       color: var(--c-navy); padding: 6px 24px 6px 6px;
+                       font-size: var(--fs-sm); line-height: var(--lh-sm); font-weight: var(--fw-regular); }
 .btn-form:hover      { background: var(--c-green-pale); color: var(--c-navy); }
 .btn-form:active     { background: var(--c-navy);       color: #fff; }
 .btn-form::before {           /* círculo branco com a seta */
@@ -274,20 +276,10 @@ section { padding: 0; }
 .nav-list {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 8px; /* itens do menu agora são .btn-header (têm padding próprio) */
   list-style: none;
 }
-
-.nav-list a {
-  text-decoration: none;
-  color: var(--color-navy);
-  font-weight: var(--fw-medium);
-  font-size: var(--fs-base);
-  transition: color 0.15s ease;
-}
-/* Menu (header) — comportamento simples: muda de cor, sem sublinhado/negrito */
-.nav-list a:hover { color: var(--color-mint); }
-.nav-list a.is-active { color: var(--color-mint); }
+/* Os links do menu usam o componente .btn-header (estilos/estados vêm dele) */
 
 .nav-toggle {
   display: none;
