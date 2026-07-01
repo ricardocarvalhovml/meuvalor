@@ -1,35 +1,23 @@
-<section class="contact-form-section">
-  <div class="container">
-    <div class="contact-form-inner">
-      <div class="contact-form-copy">
-        <h2>Você tem dúvidas sobre o processo?</h2>
-        <p>Preencha o formulário abaixo. Nosso time vai analisar a sua situação e retornar para você.</p>
-        <p class="form-notice">
-          <strong>ATENÇÃO:</strong>
-          <span>o atendimento continuará exclusivamente via WhatsApp.</span>
-        </p>
-      </div>
-
-      <form id="contact-form" class="contact-form" novalidate>
-        <div class="form-row">
-          <label for="nome">Nome completo:*</label>
-          <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-        </div>
-
-        <div class="form-row">
-          <label for="whatsapp">WhatsApp:*</label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="+55 (00) 0 0000-0000" required />
-        </div>
-
-        <div class="form-row">
-          <label for="email">E-mail:*</label>
-          <input type="email" id="email" name="email" placeholder="exemplo@email.com.br" required />
-        </div>
-
-        <button type="submit" class="btn-primary">Peça mais informações</button>
-
-        <p class="form-feedback" role="status" aria-live="polite"></p>
-      </form>
-    </div>
+<!-- Formulário padrão (parcial). Os campos são iguais em todas as páginas;
+     o título/intro da seção fica em cada página (textos finais por página).
+     A submissão será implementada pelo time de backend (ver js/form.js). -->
+<form id="contact-form" class="contact-form" novalidate>
+  <div class="form-row">
+    <label for="nome">Nome completo:*</label>
+    <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
   </div>
-</section>
+
+  <div class="form-row">
+    <label for="whatsapp">WhatsApp:*</label>
+    <input type="tel" id="whatsapp" name="whatsapp" placeholder="+55 (00) 0 0000-0000" required />
+  </div>
+
+  <div class="form-row">
+    <label for="email">E-mail:*</label>
+    <input type="email" id="email" name="email" placeholder="exemplo@email.com.br" required />
+  </div>
+
+  <button type="submit" class="btn btn--lime btn--arrow">Peça mais informações</button>
+
+  <p class="form-feedback" role="status" aria-live="polite"></p>
+</form>

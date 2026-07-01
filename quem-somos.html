@@ -31,7 +31,7 @@
 
   <main>
     <!-- ===================== HERO ===================== -->
-    <div class="container" style="padding-top: 24px;">
+    <div class="container">
       <div class="hero-overlay">
         <img src="assets/img/banner-01-laptop.jpg" alt="Mesa de trabalho com notebook e caderno" />
         <div class="overlay-text">
@@ -60,18 +60,45 @@
     <!-- ===================== BIG NUMBERS ===================== -->
     <section class="container">
       <div class="stats-bar">
-        <div class="stat"><div class="stat-number">10BI</div><div class="stat-label">ativos mapeados</div></div>
-        <div class="stat"><div class="stat-number">98%</div><div class="stat-label">êxitos nos projetos</div></div>
-        <div class="stat"><div class="stat-number">3K</div><div class="stat-label">empresas atendidas</div></div>
-        <div class="stat"><div class="stat-number">10K</div><div class="stat-label">projetos concluídos</div></div>
+        <div class="stat">
+          <div class="stat-value">
+            <img class="stat-ico stat-ico--plus" src="assets/img/icon-mais.svg" alt="" aria-hidden="true" />
+            <span class="stat-number">10BI</span>
+            <img class="stat-ico stat-ico--arrow" src="assets/img/icon-seta.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="stat-label">ativos mapeados</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">
+            <img class="stat-ico stat-ico--plus" src="assets/img/icon-mais.svg" alt="" aria-hidden="true" />
+            <span class="stat-number">98%</span>
+            <img class="stat-ico stat-ico--arrow" src="assets/img/icon-seta.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="stat-label">êxitos nos projetos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">
+            <img class="stat-ico stat-ico--plus" src="assets/img/icon-mais.svg" alt="" aria-hidden="true" />
+            <span class="stat-number">3K</span>
+            <img class="stat-ico stat-ico--arrow" src="assets/img/icon-seta.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="stat-label">empresas atendidas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">
+            <img class="stat-ico stat-ico--plus" src="assets/img/icon-mais.svg" alt="" aria-hidden="true" />
+            <span class="stat-number">10K</span>
+            <img class="stat-ico stat-ico--arrow" src="assets/img/icon-seta.svg" alt="" aria-hidden="true" />
+          </div>
+          <div class="stat-label">projetos concluídos</div>
+        </div>
       </div>
     </section>
 
     <!-- ===================== DNA / VÍDEO ===================== -->
     <section class="container video-block">
-      <div class="video-thumb">
-        <img src="assets/img/video-thumb-fundador.jpg" alt="Vídeo institucional da Meu Valor" />
-        <span class="play-button">▶</span>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/ziocebq8nM8" title="Você tem dinheiro esquecido na Justiça - e provavelmente não sabe disso" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div>
         <h3 style="margin-bottom: 16px;">Meu Valor é fruto do movimento de evolução, inquieto e certeiro da vml</h3>
@@ -97,6 +124,20 @@
       </div>
     </section>
 
+    <!-- ===================== FORMULÁRIO ===================== -->
+    <section class="container">
+      <div class="contact-form-section">
+        <div class="contact-form-inner">
+          <div class="contact-form-copy">
+            <h2>Recebi o contato da Meu Valor, mas ainda tenho dúvidas.</h2>
+            <p>Preencha o formulário ao lado!</p>
+            <p class="form-notice"><strong>ATENÇÃO:</strong> o atendimento continuará exclusivamente via whatsapp.</p>
+          </div>
+          <div data-include="components/form.html"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== FECHAMENTO — DEPOIMENTO ===================== -->
     <section class="container">
       <div class="testimonial-carousel">
@@ -105,11 +146,6 @@
         <p class="testimonial-author">Cliente Meu Valor</p>
       </div>
     </section>
-
-    <!-- ===================== FORMULÁRIO (parcial) ===================== -->
-    <div class="container">
-      <div data-include="components/form.html"></div>
-    </div>
   </main>
 
   <div class="alert-bar mint">

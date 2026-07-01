@@ -26,8 +26,11 @@ São iguais em todas as páginas — no WordPress viram `header.php`, `footer.ph
 | `global_redes_sociais` | lista (ícone + link) | footer |
 | `global_selos` | galeria (4 imagens) | footer (`assets/img/badge-*.jpg`) |
 | `global_alerta_seguranca` | texto | faixa verde (todas as páginas) |
-| `form_titulo` / `form_texto` / `form_aviso` | texto | parcial do formulário |
-| `form_campos` | (nome, whatsapp, e-mail) | **integração/envio: time de backend** |
+| `form_campos` | nome, whatsapp, e-mail + aviso | parcial `form.html` (padrão em todas as páginas) — **envio: time de backend** |
+
+> O **título/intro** da seção de formulário é **por página** (textos finais diferentes em
+> cada uma — ver campo `*_form_titulo` em cada seção abaixo). Apenas os campos do formulário
+> são padronizados na parcial.
 
 ## SEO (por página — no `<head>`)
 Cada página tem: `meta_title`, `meta_description`, `meta_keywords`, `canonical`,

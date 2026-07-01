@@ -65,6 +65,9 @@
 
   --container-width: 1280px;
   --radius: 16px;
+
+  /* Espaçamento vertical entre seções (autolayout do Figma = 50) */
+  --section-gap: 50px;
 }
 
 * {
@@ -115,9 +118,14 @@ a {
   color: inherit;
 }
 
-section {
-  padding: 64px 0;
+/* Ritmo vertical: 50px de espaçamento entre todas as seções */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  padding-block: var(--section-gap);
 }
+section { padding: 0; }
 
 .eyebrow {
   display: inline-block;
@@ -133,33 +141,99 @@ section {
   margin-bottom: 16px;
 }
 
-.btn-primary,
-.btn-lime {
+/* ==========================================================================
+   Botões — 3 tipos + botão-flecha. Modelo pronto: troque só o texto no HTML.
+   O padding se adapta ao tamanho do texto (inline-flex). Hover e click prontos.
+   Uso: <a class="btn btn--lime">Texto</a> | btn--navy | btn--pale | + btn--arrow
+   (.btn-lime e .btn-primary seguem funcionando como apelidos do tipo limão)
+   ========================================================================== */
+.btn, .btn-lime, .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--color-lime);
-  color: var(--color-navy);
-  border: none;
+  justify-content: center;
+  gap: 10px;
   padding: 14px 28px;
+  border: 2px solid transparent;
   border-radius: 999px;
+  font-family: var(--font-heading);
   font-weight: var(--fw-bold);
-  cursor: pointer;
-  text-decoration: none;
   font-size: var(--fs-btn);
   line-height: var(--lh-btn);
-  transition: filter 0.15s ease, transform 0.15s ease;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+              transform 0.1s ease, box-shadow 0.15s ease;
+}
+.btn:active, .btn-lime:active, .btn-primary:active { transform: translateY(1px); }
+
+/* Tipo 1 — Limão (CTA principal) */
+.btn--lime, .btn-lime, .btn-primary { background: var(--c-lime); color: var(--c-navy); }
+.btn--lime:hover, .btn-lime:hover, .btn-primary:hover { background: #a6db2f; }
+.btn--lime:active, .btn-lime:active, .btn-primary:active { background: #98cf20; box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15); }
+
+/* Tipo 2 — Navy */
+.btn--navy { background: var(--c-navy); color: #fff; }
+.btn--navy:hover { background: #1a3d75; }
+.btn--navy:active { background: #16386f; box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.25); }
+
+/* Tipo 3 — Verde-claro */
+.btn--pale { background: var(--c-green-pale); color: var(--c-navy); }
+.btn--pale:hover { background: #e6f8c8; }
+.btn--pale:active { background: #d9f2ac; }
+
+/* Botão-flecha — círculo branco com seta à esquerda */
+.btn--arrow { padding-left: 8px; }
+.btn--arrow::before {
+  content: "→";
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--c-navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
-.btn-primary:hover,
-.btn-lime:hover {
-  filter: brightness(0.95);
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+.tag {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--c-green);
+  color: var(--c-green-700);
+  background: transparent;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
 }
-.btn-primary:active,
-.btn-lime:active {
-  transform: translateY(1px);
-  filter: brightness(0.9);
+.tag--filled { background: var(--c-green); color: #fff; border-color: var(--c-green); }
+
+/* ==========================================================================
+   Setas de carrossel (default › hover › click)
+   ========================================================================== */
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--c-navy);
+  font-size: 1.3rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
+.carousel-arrow:hover { background: var(--c-blue-muted); color: #fff; border-color: var(--c-blue-muted); }
+.carousel-arrow:active { background: var(--c-navy); color: #fff; border-color: var(--c-navy); }
 
 /* ==========================================================================
    Header
@@ -200,8 +274,8 @@ section {
   font-size: var(--fs-base);
   transition: color 0.15s ease;
 }
-.nav-list a:hover { color: var(--color-mint); }
-.nav-list a.is-active { color: var(--color-navy); font-weight: var(--fw-semibold); }
+.nav-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.nav-list a.is-active { font-weight: var(--fw-bold); }
 
 .nav-toggle {
   display: none;
@@ -309,7 +383,6 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
-  padding: 64px 0;
 }
 
 .hero h1 {
@@ -324,6 +397,17 @@ section {
 .hero .highlight {
   font-style: italic;
   font-weight: 600;
+  color: var(--color-navy);
+}
+
+.quote-badge {
+  display: inline-block;
+  background: var(--color-bg-light);
+  border-left: 3px solid var(--color-mint);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-weight: var(--fw-medium);
   color: var(--color-navy);
 }
 
@@ -381,14 +465,25 @@ section {
   background: var(--color-bg-light);
   border-radius: var(--radius);
   padding: 32px;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
+/* Hover/ativo (Tópicos): bloco navy com texto branco */
+.card:hover {
+  background: var(--c-navy);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(22, 38, 79, 0.18);
+}
+.card:hover h3 { color: #fff; }
+.card:hover p { color: rgba(255, 255, 255, 0.85); }
+.card:hover .card-icon { background: rgba(255, 255, 255, 0.28); }
 
 .card-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--color-footer-navy);
+  background: var(--color-muted);
   margin-bottom: 20px;
+  transition: background 0.18s ease;
 }
 
 .card h3 {
@@ -408,10 +503,11 @@ section {
    ========================================================================== */
 
 .section-deep {
-  background: var(--color-navy-deep);
+  background: linear-gradient(rgba(5, 8, 40, 0.35), rgba(5, 8, 40, 0.45)),
+              var(--color-navy-deep) url("../assets/img/banner-03-abstrato.jpg") center / cover no-repeat;
   color: #fff;
   border-radius: var(--radius);
-  padding: 56px 40px;
+  padding: 72px 40px;
   text-align: center;
 }
 
@@ -451,16 +547,26 @@ section {
   text-align: center;
 }
 
-.stats-bar .stat-number {
-  font-size: var(--fs-h3);
-  line-height: 1.1;
-  font-weight: var(--fw-extra);
-  color: var(--color-mint);
+.stats-bar .stat-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
+.stats-bar .stat-number {
+  font-size: var(--fs-h2);
+  line-height: 1;
+  font-weight: var(--fw-extra);
+  color: #fff;
+}
+.stats-bar .stat-ico { width: auto; flex-shrink: 0; }
+.stats-bar .stat-ico--plus { height: 22px; }
+.stats-bar .stat-ico--arrow { height: 16px; align-self: flex-start; margin-top: 4px; }
 
 .stats-bar .stat-label {
   font-size: var(--fs-sm);
-  opacity: 0.85;
+  opacity: 0.9;
+  margin-top: 6px;
 }
 
 /* ==========================================================================
@@ -503,6 +609,23 @@ section {
   color: var(--color-navy);
 }
 
+/* Vídeo embedado (YouTube) — responsivo 16:9 */
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* ==========================================================================
    Depoimentos
    ========================================================================== */
@@ -519,6 +642,15 @@ section {
 
 .testimonial-slide { display: none; }
 .testimonial-slide.is-active { display: block; }
+
+.testimonial-carousel [data-testimonial-prev],
+.testimonial-carousel [data-testimonial-next] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.testimonial-carousel [data-testimonial-prev] { left: -8px; }
+.testimonial-carousel [data-testimonial-next] { right: -8px; }
 
 .testimonial-quote-mark {
   font-size: 40px;
@@ -606,20 +738,25 @@ section {
 
 .faq-question::after {
   content: "+";
-  font-size: 20px;
-  color: var(--color-navy);
-  background: var(--color-bg);
-  width: 28px;
-  height: 28px;
+  font-size: 22px;
+  line-height: 1;
+  color: #fff;
+  background: var(--c-navy);
+  border: 2px solid var(--c-navy);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .faq-question[aria-expanded="true"]::after {
-  content: "−";
+  content: "×";
+  background: #fff;
+  color: var(--c-navy);
 }
 
 .faq-answer {
@@ -709,6 +846,20 @@ section {
   border-radius: 8px;
   font-family: inherit;
   background: var(--color-bg-light);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+/* Escrevendo / em foco */
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--c-navy);
+  box-shadow: 0 0 0 3px rgba(32, 73, 138, 0.12);
+}
+/* Preenchido e válido */
+.form-row input:not(:placeholder-shown):valid {
+  background: #fff;
+  border-color: var(--c-green);
 }
 
 .form-feedback {
@@ -801,12 +952,18 @@ section {
   margin-top: 12px;
 }
 
-.footer-socials span {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+.footer-socials .social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--c-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
 }
+.footer-socials .social-btn:hover { background: var(--c-blue-muted); }
+.footer-socials .social-btn img { width: 20px; height: 20px; }
 
 .footer-contact-item {
   display: flex;
@@ -947,7 +1104,5 @@ section {
     align-items: flex-start;
   }
 
-  section {
-    padding: 40px 0;
-  }
+  main { gap: 40px; padding-block: 40px; }
 }
