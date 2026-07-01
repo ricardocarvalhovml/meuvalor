@@ -731,7 +731,7 @@ section { padding: 0; }
 }
 
 .instagram-post img {
-  aspect-ratio: 3 / 5;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   width: 100%;
   border-radius: 12px;
