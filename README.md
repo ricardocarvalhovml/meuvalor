@@ -89,6 +89,21 @@ Definidos em `css/style.css`, bloco `:root`:
   H3 30/38, H4 22/30, corpo 18/24 e 16/22, pequeno 14/18, overline 12/16, botão 16/20.
   Os títulos usam `clamp()` para escalar de forma fluida no mobile.
 
+## 4.1. Proporções de imagem (padrão do site)
+
+Todas as imagens têm proporção **travada** via CSS (`aspect-ratio` + `object-fit: cover`),
+para que qualquer troca de imagem no futuro se encaixe sem quebrar o layout. Ao exportar
+novas imagens, siga estas proporções:
+
+| Onde | Proporção | Selector CSS |
+|---|---|---|
+| Hero, banners rotativos, "Quem somos", mosaico de passos, mapa, página Obrigado, vídeo | **16:9** | `.hero img`, `.banner-slide img`, `.hero-overlay img`, `.step__media img`, `.map-block img`, `.thanks-hero img`, `.video-embed` |
+| Posts do Instagram | **3:5** | `.instagram-post img` |
+| Logos, ícones e selos | formato natural (SVG/PNG) | — |
+
+> Como o encaixe usa `object-fit: cover`, imagens muito fora da proporção têm as bordas
+> cortadas. O ideal é já exportar no formato correto (16:9 para conteúdo, 3:5 para Instagram).
+
 ## 5. SEO
 
 Implementado em todas as páginas indexáveis:
