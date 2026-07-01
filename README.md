@@ -97,12 +97,14 @@ novas imagens, siga estas proporções:
 
 | Onde | Proporção | Selector CSS |
 |---|---|---|
-| Hero, banners rotativos, "Quem somos", mosaico de passos, mapa, página Obrigado, vídeo | **16:9** | `.hero img`, `.banner-slide img`, `.hero-overlay img`, `.step__media img`, `.map-block img`, `.thanks-hero img`, `.video-embed` |
-| Posts do Instagram | **3:5** | `.instagram-post img` |
+| Hero, "Quem somos", mosaico de passos, mapa, página Obrigado, vídeo | **16:9** (1,78:1) | `.hero img`, `.hero-overlay img`, `.step__media img`, `.map-block img`, `.thanks-hero img`, `.video-embed` |
+| Banners rotativos (Home) | **12:5 panorâmico** (2,4:1) — ex.: 1200×500 | `.banner-slide img` |
+| Posts do Instagram | **3:5** (vertical) | `.instagram-post img` |
 | Logos, ícones e selos | formato natural (SVG/PNG) | — |
 
 > Como o encaixe usa `object-fit: cover`, imagens muito fora da proporção têm as bordas
-> cortadas. O ideal é já exportar no formato correto (16:9 para conteúdo, 3:5 para Instagram).
+> cortadas. O ideal é já exportar no formato correto: **16:9** para conteúdo, **12:5** para
+> os banners e **3:5** para os posts do Instagram.
 
 ## 5. SEO
 
