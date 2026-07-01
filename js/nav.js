@@ -13,9 +13,9 @@ document.addEventListener("components:ready", () => {
     });
   }
 
-  // Destaca o item de menu da página atual
+  // Destaca o item da página atual no menu (header) e no rodapé
   const here = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".nav-list a").forEach((a) => {
+  document.querySelectorAll(".nav-list a, .footer-col a").forEach((a) => {
     if (a.getAttribute("href") === here) a.classList.add("is-active");
   });
 });

@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="Você pode ter valores em processos antigos. A Meu Valor localiza e recupera esse dinheiro, 100% legal e com pagamento no êxito." />
   <meta name="twitter:image" content="https://www.recuperameuvalor.com.br/assets/img/banner-01-laptop.jpg" />
 
-  <link rel="icon" href="assets/img/logo-meuvalor.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/style.css" />
 
   <!-- Dados estruturados: Organização -->
@@ -48,31 +48,34 @@
   <div data-include="components/header.html"></div>
 
   <main>
-    <!-- ===================== BANNER ROTATIVO ===================== -->
-    <div class="container" style="padding-top: 24px;">
+    <!-- ===================== HERO (texto + imagem à direita) ===================== -->
+    <section class="container hero">
+      <div>
+        <h1>
+          Tem dinheiro seu parado na Justiça.<br />
+          <span class="hl">A Meu Valor recupera para você.</span>
+        </h1>
+        <p style="margin-top: 16px;">
+          Todos os dias, centenas de processos são encerrados e os valores ficam esquecidos em contas
+          judiciais. Ninguém avisa os donos. A Meu Valor encontra esse dinheiro e cuida da burocracia até
+          ele cair na sua conta.
+        </p>
+      </div>
+      <img src="assets/img/banner-01-laptop.jpg" alt="Mesa de trabalho com notebook e caderno" />
+    </section>
+
+    <!-- ===================== FAIXA VERDE ===================== -->
+    <div class="alert-bar">Atenção: nunca solicitamos dinheiro antecipado</div>
+
+    <!-- ===================== BANNERS ROTATIVOS ===================== -->
+    <div class="container">
       <section class="banner-carousel" data-autoplay="6000" aria-label="Destaques">
         <div class="banner-track">
-          <div class="banner-slide"><img src="assets/img/banner-01-laptop.jpg" alt="Mesa de trabalho com notebook e caderno" /></div>
           <div class="banner-slide"><img src="assets/img/banner-02-escritorio.jpg" alt="Sala de reunião do escritório Meu Valor" /></div>
         </div>
         <div class="banner-dots"></div>
       </section>
     </div>
-
-    <!-- ===================== HERO ===================== -->
-    <div class="container">
-      <h1 style="margin: 40px 0 16px; max-width: 720px;">
-        Tem dinheiro seu parado na Justiça.<br />
-        <span class="hl">A Meu Valor recupera para você.</span>
-      </h1>
-      <p style="max-width: 720px; margin-bottom: 40px;">
-        Todos os dias, centenas de processos são encerrados e os valores ficam esquecidos em contas
-        judiciais. Ninguém avisa os donos. A Meu Valor encontra esse dinheiro e cuida da burocracia até
-        ele cair na sua conta.
-      </p>
-    </div>
-
-    <div class="alert-bar">Atenção: nunca solicitamos dinheiro antecipado</div>
 
     <!-- ===================== O QUE FAZEMOS ===================== -->
     <section class="container">

@@ -274,8 +274,9 @@ section { padding: 0; }
   font-size: var(--fs-base);
   transition: color 0.15s ease;
 }
-.nav-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.nav-list a.is-active { font-weight: var(--fw-bold); }
+/* Menu (header) — comportamento simples: muda de cor, sem sublinhado/negrito */
+.nav-list a:hover { color: var(--color-mint); }
+.nav-list a.is-active { color: var(--color-mint); }
 
 .nav-toggle {
   display: none;
@@ -942,7 +943,9 @@ section { padding: 0; }
   text-decoration: none;
   margin-bottom: 10px;
 }
-.footer-col a:hover { color: #fff; }
+/* Links do rodapé — comportamento "Navegação": sublinhado no hover, negrito no ativo */
+.footer-col a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+.footer-col a.is-active { color: #fff; font-weight: var(--fw-bold); }
 
 .footer-col .logo {
   color: #fff;
