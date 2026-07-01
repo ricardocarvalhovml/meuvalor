@@ -387,7 +387,6 @@ section { padding: 0; }
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
-  max-width: 480px;
 }
 
 .hero h1 {
