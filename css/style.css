@@ -150,18 +150,24 @@ section { padding: 0; }
 .eyebrow:hover { background: var(--c-green-pale); }
 
 /* ==========================================================================
-   BOTÃO — componente ÚNICO. Todos os botões do site usam .btn.
-   Editar .btn muda TODOS. No HTML muda só o texto. Padding se adapta ao texto.
-   Uso: <a class="btn">Texto</a>  |  botão-flecha: <a class="btn btn--arrow">Texto</a>
-   (.btn-lime / .btn-primary = apelidos de .btn. .btn--navy/--pale = variantes opcionais.)
+   BOTÕES — existem SÓ 3 no site inteiro (sem exceção). Cada um é um componente
+   reutilizável com os 3 estados: default › hover (:hover) › click (:active).
+   No HTML muda só o texto.
+
+     .btn-padrao  → PADRÃO — usado em todas as páginas/lugares
+     .btn-header  → botão do MENU do header ("Verificar meus valores")
+     .btn-form    → botão do FORMULÁRIO, com seta ("Peça mais informações")
+
+   (.btn é apelido de .btn-padrao, para não quebrar marcações existentes.)
    ========================================================================== */
-.btn, .btn-lime, .btn-primary {
+
+/* Base compartilhada: geometria + fonte (peso/tamanho iguais nos três) */
+.btn-padrao, .btn, .btn-header, .btn-form {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 14px 28px;
-  border: 2px solid transparent;
   border-radius: 999px;
   font-family: var(--font-heading);
   font-weight: var(--fw-bold);
@@ -170,23 +176,26 @@ section { padding: 0; }
   text-decoration: none;
   text-align: center;
   cursor: pointer;
-  background: var(--c-lime);
-  color: var(--c-navy);
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
-              transform 0.1s ease, box-shadow 0.15s ease;
+  border: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
 }
-.btn:hover, .btn-lime:hover, .btn-primary:hover { background: #a6db2f; }
-.btn:active, .btn-lime:active, .btn-primary:active { background: #98cf20; transform: translateY(1px); box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.15); }
+.btn-padrao:active, .btn:active, .btn-header:active, .btn-form:active { transform: translateY(1px); }
 
-/* Variantes opcionais do design system (o site usa .btn/limão em tudo) */
-.btn--navy { background: var(--c-navy); color: #fff; }
-.btn--navy:hover { background: #1a3d75; }
-.btn--pale { background: var(--c-green-pale); color: var(--c-navy); }
-.btn--pale:hover { background: #e6f8c8; }
+/* 1) PADRÃO — limão › (hover) navy › (click) verde-claro */
+.btn-padrao, .btn                 { background: var(--c-lime);       color: var(--c-navy); }
+.btn-padrao:hover, .btn:hover     { background: var(--c-navy);       color: #fff; }
+.btn-padrao:active, .btn:active   { background: var(--c-green-pale); color: var(--c-navy); }
 
-/* Botão-flecha — círculo branco com seta à esquerda */
-.btn--arrow { padding-left: 8px; }
-.btn--arrow::before {
+/* 2) HEADER — texto (sem fundo) › (hover) limão › (click) navy */
+.btn-header          { background: transparent;   color: var(--c-navy); }
+.btn-header:hover    { background: var(--c-lime);  color: var(--c-navy); }
+.btn-header:active   { background: var(--c-navy);  color: #fff; }
+
+/* 3) FORMULÁRIO (com seta) — limão › (hover) verde-claro › (click) navy */
+.btn-form            { background: var(--c-lime);       color: var(--c-navy); padding-left: 8px; }
+.btn-form:hover      { background: var(--c-green-pale); color: var(--c-navy); }
+.btn-form:active     { background: var(--c-navy);       color: #fff; }
+.btn-form::before {           /* círculo branco com a seta */
   content: "→";
   flex: none;
   width: 34px;
@@ -862,13 +871,16 @@ section { padding: 0; }
   background: var(--color-bg);
   border-radius: var(--radius);
   padding: 32px;
+  width: 100%;
+  max-width: 470px;
+  margin-inline: auto;
 }
 
 .form-row {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .form-row label {
@@ -879,11 +891,11 @@ section { padding: 0; }
 
 .form-row input,
 .form-row textarea {
-  padding: 12px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
   font-family: inherit;
-  background: var(--color-bg-light);
+  background: #f4f5f7; /* cinza bem claro (campo a preencher) */
   transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 /* Escrevendo / em foco */
@@ -996,7 +1008,9 @@ section { padding: 0; }
   color: var(--c-navy);
   text-decoration: none;
 }
-.footer-col a.btn:hover { color: var(--c-navy); text-decoration: none; }
+/* acompanha os estados do botão padrão (hover = fundo navy, texto branco) */
+.footer-col a.btn:hover { color: #fff; text-decoration: none; }
+.footer-col a.btn:active { color: var(--c-navy); }
 
 .footer-col .logo {
   color: #fff;
