@@ -1,4 +1,4 @@
-# Meu Valor — Site institucional (frontend)
+# Meu Valor - Site institucional (frontend)
 
 Site institucional da **Meu Valor**, marca da **vml company** voltada à recuperação de
 valores esquecidos na Justiça para pessoas físicas.
