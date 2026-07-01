@@ -1,8 +1,0 @@
-/* =============================================================
-   MEU VALOR — entrada de estilos (único <link> nas páginas)
-   Ordem importa: tokens › base › componentes.
-   ============================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap'); /* fallback p/ Causten no preview */
-@import 'tokens.css';
-@import 'base.css';
-@import 'components.css';
