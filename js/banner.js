@@ -1,14 +1,14 @@
 /**
  * banner.js
- * Carrossel simples, sem dependência externa.
+ * Carrossel de banners: troca automática (autoplay), pausa quando o mouse
+ * está em cima e bolinhas (dots) de navegação. Setas são opcionais.
+ *
  * HTML esperado:
- * <div class="banner-carousel" data-autoplay="5000">
+ * <div class="banner-carousel" data-autoplay="6000">
  *   <div class="banner-track">
  *     <div class="banner-slide">...</div>
- *     <div class="banner-slide">...</div>
+ *     ...
  *   </div>
- *   <button class="banner-prev">‹</button>
- *   <button class="banner-next">›</button>
  *   <div class="banner-dots"></div>
  * </div>
  */
@@ -24,46 +24,50 @@ function initCarousel(carousel) {
   let current = 0;
   let timer = null;
 
-  slides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.className = "banner-dot";
-    dot.setAttribute("aria-label", `Ir para slide ${i + 1}`);
-    dot.addEventListener("click", () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
+  if (dotsWrap) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "banner-dot";
+      dot.setAttribute("aria-label", `Ir para slide ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+  }
 
   function update() {
     track.style.transform = `translateX(-${current * 100}%)`;
-    dotsWrap.querySelectorAll(".banner-dot").forEach((d, i) => {
-      d.classList.toggle("is-active", i === current);
-    });
+    if (dotsWrap) {
+      dotsWrap.querySelectorAll(".banner-dot").forEach((d, i) => {
+        d.classList.toggle("is-active", i === current);
+      });
+    }
   }
 
   function goTo(index) {
     current = (index + slides.length) % slides.length;
     update();
-    resetAutoplay();
+    restartAutoplay();
   }
 
-  function next() {
-    goTo(current + 1);
-  }
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
 
-  function prev() {
-    goTo(current - 1);
-  }
-
-  function resetAutoplay() {
-    if (!autoplayMs) return;
-    clearInterval(timer);
+  function startAutoplay() {
+    if (!autoplayMs || slides.length <= 1) return;
     timer = setInterval(next, autoplayMs);
   }
+  function stopAutoplay() { clearInterval(timer); }
+  function restartAutoplay() { stopAutoplay(); startAutoplay(); }
 
-  nextBtn.addEventListener("click", next);
-  prevBtn.addEventListener("click", prev);
+  if (nextBtn) nextBtn.addEventListener("click", next);
+  if (prevBtn) prevBtn.addEventListener("click", prev);
+
+  // Pausa quando o mouse está sobre o banner
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
 
   update();
-  resetAutoplay();
+  startAutoplay();
 }
 
 document.addEventListener("components:ready", () => {
